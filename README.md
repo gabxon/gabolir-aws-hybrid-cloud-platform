@@ -1,4 +1,7 @@
 # AWS High Availability Hybrid Cloud Platform
+# AWS High Availability Hybrid Cloud Platform
+
+![AWS Architecture](assets/aws-architecture-banner.png)
 
 ## Project Overview
 
