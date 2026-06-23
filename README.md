@@ -2,116 +2,214 @@
 
 ## Project Overview
 
-This project demonstrates the design and implementation of a highly available and self-healing web platform on Amazon Web Services (AWS).
+This project demonstrates the design and implementation of a highly available, scalable, and fault-tolerant web platform on Amazon Web Services (AWS).
 
-The solution leverages Amazon EC2, Application Load Balancer (ALB), Auto Scaling Groups (ASG), Route 53, CloudWatch, and Multi-AZ deployment to ensure fault tolerance, scalability, and high availability.
+The solution leverages Amazon EC2, Application Load Balancer (ALB), Auto Scaling Groups (ASG), Amazon Route 53, AWS Certificate Manager (ACM), Amazon CloudFront, and Amazon CloudWatch to provide a secure and resilient infrastructure capable of handling traffic efficiently while maintaining high availability.
 
-The project was built and tested by intentionally terminating running EC2 instances and validating that the Auto Scaling Group automatically launched replacement instances while maintaining application availability through the Application Load Balancer.
+The platform was tested by validating load balancing, health checks, HTTPS connectivity, custom domain integration, and Auto Scaling functionality.
 
 ---
 
-## Architecture Summary
+## Architecture Diagram
 
-### AWS Services Used
+Detailed architecture documentation can be found here:
 
-* Amazon EC2
-* Application Load Balancer (ALB)
-* Auto Scaling Group (ASG)
+`architecture/aws-architecture.md`
+
+### Architecture Components
+
 * Amazon Route 53
-* Amazon CloudWatch
 * AWS Certificate Manager (ACM)
+* Amazon CloudFront
+* Application Load Balancer (ALB)
+* Target Group
+* Auto Scaling Group (ASG)
+* Amazon EC2
 * Amazon VPC
-* Public Subnets
-
-### Infrastructure Components
-
-| Component          | Configuration         |
-| ------------------ | --------------------- |
-| Region             | us-east-1             |
-| VPC                | vpc-076a595462854afed |
-| Load Balancer      | gabolir-alb           |
-| Target Group       | gabolir-web-tg        |
-| Auto Scaling Group | gabolir-asg           |
-| Desired Capacity   | 2                     |
-| Minimum Capacity   | 2                     |
-| Maximum Capacity   | 4                     |
-| Security Group     | launch-wizard-2       |
-| Web Server         | Apache HTTPD          |
+* Multi-AZ Deployment
+* Amazon CloudWatch
 
 ---
 
-## High Availability Design
+## AWS Services Used
 
-The platform is deployed across multiple Availability Zones:
-
-* us-east-1a
-* us-east-1c
-
-Traffic is distributed through the Application Load Balancer, ensuring continuous service availability even if an EC2 instance fails.
-
----
-
-## Auto Scaling Demonstration
-
-The Auto Scaling Group was configured with:
-
-* Minimum Capacity: 2
-* Desired Capacity: 2
-* Maximum Capacity: 4
-
-When an EC2 instance was manually terminated, the Auto Scaling Group automatically launched a replacement instance to maintain the desired capacity.
+| Service                   | Purpose                        |
+| ------------------------- | ------------------------------ |
+| Amazon EC2                | Web Server Hosting             |
+| Auto Scaling Group        | Automatic Instance Management  |
+| Application Load Balancer | Traffic Distribution           |
+| Amazon Route 53           | DNS Management                 |
+| AWS Certificate Manager   | SSL/TLS Certificate Management |
+| Amazon CloudFront         | Content Delivery Network       |
+| Amazon CloudWatch         | Monitoring                     |
+| Amazon VPC                | Network Isolation              |
 
 ---
 
-## Self-Healing Infrastructure Test
+## Infrastructure Details
 
-### Test Performed
+### Region
 
-1. Verified two healthy EC2 instances.
-2. Manually terminated one running instance.
-3. Auto Scaling Group detected capacity reduction.
-4. New replacement instance launched automatically.
-5. Target Group health checks passed.
-6. Website remained accessible through the Load Balancer.
+`us-east-1 (N. Virginia)`
 
-### Result
+### VPC
 
-Successful demonstration of AWS self-healing infrastructure and high availability architecture.
+`vpc-076a595462854afed`
+
+### Application Load Balancer
+
+`gabolir-alb`
+
+### Target Group
+
+`gabolir-web-tg`
+
+### Auto Scaling Group
+
+`gabolir-asg`
+
+### Scaling Configuration
+
+```text
+Minimum Capacity: 2
+Desired Capacity: 2
+Maximum Capacity: 4
+```
+
+---
+
+## Validation Testing
+
+### Test 1 – Website Accessibility
+
+Validated successful access using:
+
+`https://www.gabolirmultinationals.com.ng`
+
+**Result:** ✅ Successful
+
+---
+
+### Test 2 – SSL Certificate Validation
+
+Validated HTTPS connectivity using:
+
+* AWS Certificate Manager (ACM)
+* Custom Domain
+* CloudFront Distribution
+
+**Result:** ✅ Successful
+
+---
+
+### Test 3 – Load Balancer Health Check
+
+Verified healthy targets behind the Application Load Balancer.
+
+**Result:** ✅ 3 Healthy Targets
+
+---
+
+### Test 4 – Auto Scaling Validation
+
+Validated Auto Scaling Group operation with:
+
+```text
+Minimum: 2
+Desired: 2
+Maximum: 4
+```
+
+**Result:** ✅ Successful
+
+---
+
+## Project Screenshots
+
+### EC2 Instances
+
+![EC2 Instances](screenshots/ec2-instances.png)
+
+### Auto Scaling Group
+
+![Auto Scaling Group](screenshots/auto-scaling-group.png)
+
+### Application Load Balancer
+
+![Application Load Balancer](screenshots/application-load-balancer.png)
+
+### Target Group Health
+
+![Target Group Health](screenshots/target-group-health.png)
+
+### CloudFront Distribution
+
+![CloudFront Distribution](screenshots/cloudfront-distribution.png)
+
+### ACM Certificate
+
+![ACM Certificate](screenshots/acm-certificate.png)
+
+### HTTPS Website Validation
+
+![HTTPS Website Validation](screenshots/https-custom-domain.png)
 
 ---
 
 ## Skills Demonstrated
 
-* AWS EC2 Administration
-* Application Load Balancer Configuration
-* Auto Scaling Group Deployment
-* Route 53 Integration
-* CloudWatch Monitoring
+* AWS Cloud Infrastructure
+* Amazon EC2
+* Auto Scaling
+* Load Balancing
+* Route 53 DNS
+* AWS Certificate Manager (ACM)
+* Amazon CloudFront
+* Amazon CloudWatch
 * High Availability Architecture
-* Infrastructure Resilience Testing
-* Linux Server Administration
-* Apache HTTPD Deployment
-* AWS Networking
+* Infrastructure Documentation
+* Cloud Networking
 
 ---
 
-## Screenshots
+## Future Improvements
 
-Screenshots and evidence of deployment, health checks, Auto Scaling activities, and load balancing are available in the `/screenshots` folder.
+* Terraform Infrastructure as Code
+* CI/CD Pipeline Integration
+* Private Subnets
+* Bastion Host
+* Amazon RDS
+* AWS WAF
+* Centralized Logging
+* Docker Containerization
+* Amazon ECS
 
 ---
 
 ## Author
 
-**Gabriel Tobi Idowu**
+### Gabriel Tobi Idowu
 
-CCNA Certified Network Engineer
-AWS Solutions Architect Associate (In Progress)
+Cloud & Infrastructure Engineer
 
-GitHub: https://github.com/gabxon
+**LinkedIn:**
+https://www.linkedin.com/in/gabriel-idowu-a1152a2aa
+
+**GitHub:**
+https://github.com/gabxon
 
 ---
 
 ## Project Status
 
-Completed and Operational
+✅ Completed
+
+✅ Operational
+
+✅ HTTPS Enabled
+
+✅ CloudFront Integrated
+
+✅ Auto Scaling Enabled
+
+✅ High Availability Validated
