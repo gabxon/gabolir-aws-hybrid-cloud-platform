@@ -123,36 +123,39 @@ Maximum: 4
 **Result:** ✅ Successful
 
 ---
-
 ## Project Screenshots
 
 ### EC2 Instances
 
-![EC2 Instances](screenshots/ec2-instances.png)
+![EC2 Instances](screenshots/ec2-running-instances.png.png)
 
 ### Auto Scaling Group
 
-![Auto Scaling Group](screenshots/auto-scaling-group.png)
+![Auto Scaling Group](screenshots/autoscaling-group-overview.png.png)
 
 ### Application Load Balancer
 
-![Application Load Balancer](screenshots/application-load-balancer.png)
+![Application Load Balancer](screenshots/application-load-balancer.png.png)
 
 ### Target Group Health
 
-![Target Group Health](screenshots/target-group-health.png)
+![Target Group Health](screenshots/target-group-health.png.png)
 
 ### CloudFront Distribution
 
-![CloudFront Distribution](screenshots/cloudfront-distribution.png)
+![CloudFront Distribution](screenshots/cloudfront-distribution.png.png)
 
 ### ACM Certificate
 
-![ACM Certificate](screenshots/acm-certificate.png)
+![ACM Certificate](screenshots/acm-certificate.png.png)
 
 ### HTTPS Website Validation
 
-![HTTPS Website Validation](screenshots/https-custom-domain.png)
+![HTTPS Website Validation](screenshots/https-custom-domain.png.png)
+
+### Website Through ALB
+
+![Website Through ALB](screenshots/website-via-alb.png.png)
 
 ---
 
