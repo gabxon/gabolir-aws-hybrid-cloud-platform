@@ -86,7 +86,7 @@ Maximum Capacity: 4
 
 Validated successful access using:
 
-`https://www.gabolirmultinationals.com.ng`
+`https://www.gabolirmultiantionals.com.ng`
 
 **Result:** ✅ Successful
 
